@@ -104,18 +104,28 @@ $students = $studentController->index();
       <br>
       <br>
       <!-- Display messages -->
+
+
       <?php if (isset($_GET['message'])): ?>
-      <div class="alert alert-warning alert-custom"><?= htmlspecialchars($_GET['message']) ?></div>
+      <div class="alert alert-warning alert-custom auto-hide"><?= htmlspecialchars($_GET['message']) ?></div>
       <?php endif; ?>
 
       <?php if (isset($_GET['insert_msg'])): ?>
-      <div class="alert alert-success alert-custom"><?= htmlspecialchars($_GET['insert_msg']) ?></div>
+      <div class="alert alert-success alert-custom auto-hide"><?= htmlspecialchars($_GET['insert_msg']) ?></div>
       <?php endif; ?>
 
       <?php if (isset($_GET['update_msg'])): ?>
-      <div class="alert alert-success alert-custom"><?= htmlspecialchars($_GET['update_msg']) ?></div>
+      <div class="alert alert-success alert-custom auto-hide"><?= htmlspecialchars($_GET['update_msg']) ?></div>
       <?php endif; ?>
 
+      <script>
+      setTimeout(function() {
+        let alerts = document.querySelectorAll('.auto-hide');
+        alerts.forEach(function(alert) {
+          alert.style.display = 'none';
+        });
+      }, 5000);
+      </script>
 
       <!-- Add Student Modal -->
       <div class="modal fade" id="addStudentModal" tabindex="-1" aria-hidden="true">
